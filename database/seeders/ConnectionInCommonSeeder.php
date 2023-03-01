@@ -32,12 +32,12 @@ class ConnectionInCommonSeeder extends Seeder
 
         Connection::create([
             'user_id'   => 4,
-            'connection_id'   => 3,
+            'connection_id'   => 6,
         ]);
 
         Connection::create([
             'user_id'   => 5,
-            'connection_id'   => 3,
+            'connection_id'   => 2,
         ]);
     }
 }

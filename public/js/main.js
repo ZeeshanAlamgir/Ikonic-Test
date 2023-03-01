@@ -69,12 +69,12 @@ function getConnections()
 
      if(response.status)
      {
-        let mutual_friends_count = response.data.my_connections.mutual_friends.length;
+        let mutualFriendsCount = response.data.my_connections.mutual_friends.length;
         $('#connection_count').text(response.data.count);
         $('#table').empty();
 
         response.data.my_connections.users.forEach(function(myConnection){
-          $('#table').append('<tr><td class="align-middle" style="width:10%" id="suggestion_name">'+myConnection.name+'</td><td class="align-middle"> - </td><td class="align-middle" style="width:40%" id="suggestion_email">'+myConnection.email+'</td><td class="align-middle" style="width:50%"><div class="d-flex justify-content-end w-100"><div><button style="width: 220px" id="get_connections_in_common_" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_" aria-expanded="false" aria-controls="collapseExample">Connections in common ('+mutual_friends_count+')</button><button id="remove_request_btn" class="btn btn-danger me-1" data-connection_id="'+myConnection.id+'" data-user_id="'+response.data.userId+'">Remove Connection</button></div></div></td></tr>');
+          $('#table').append('<tr><td class="align-middle" style="width:10%" id="suggestion_name">'+myConnection.name+'</td><td class="align-middle"> - </td><td class="align-middle" style="width:40%" id="suggestion_email">'+myConnection.email+'</td><td class="align-middle" style="width:50%"><div class="d-flex justify-content-end w-100"><div><button style="width: 220px" id="get_connections_in_common_" class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_" aria-expanded="false" aria-controls="collapseExample">Connections in common ('+mutualFriendsCount+')</button><button id="remove_request_btn" class="btn btn-danger me-1" data-connection_id="'+myConnection.id+'" data-user_id="'+response.data.userId+'">Remove Connection</button></div></div></td></tr>');
       })
      }
      else
