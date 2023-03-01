@@ -18,21 +18,6 @@ class SuggestionController extends Controller
     {
         if($request->ajax())
         {
-            // $user = auth()->user();
-            // $suggestionUsers = (new User())->where('id','!=',Auth::user()->id);
-            // $receiver_ids = $user->sendRequests->pluck('receiver_id')->toArray();
-            // $suggestionUsers = $suggestionUsers->whereNotIn('id',$receiver_ids);
-            // $sender_ids = $user->receivedRequests->pluck('sender_id')->toArray();
-            // $suggestionUsers = $suggestionUsers->whereNotIn('id',$sender_ids);
-            // $connections_ids = $user->connections->pluck('connection_id')->toArray();
-            // $suggestionUsers = $suggestionUsers->whereNotIn('id',$connections_ids)->get();
-            // $data = 
-            // [
-            //     'suggestionsUsers'      => $suggestionUsers,
-            //     'suggestionsUsersCount' => $suggestionUsers->count(),
-            //     'user_id'               => auth()->user()->id,
-            // ];
-            // $data = (collect($data));
             $data = $this->suggestions();
             return successResponse($data);
         }
@@ -40,7 +25,6 @@ class SuggestionController extends Controller
 
     public function store($senderId, $receiverId)
     {
-        // dd($senderId, $receiverId);
         $userRequest = (new UserRequest());
         $userRequest->sender_id = (int)$senderId; 
         $userRequest->receiver_id = $receiverId; 

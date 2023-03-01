@@ -13,9 +13,7 @@ class ConnectionController extends Controller
     public function index()
     {   
         $connectionIds = (new Connection())->where('user_id',auth()->user()->id)->pluck('connection_id')->toArray();
-        // dump($connectionIds);
         $mutualFriendIds = (new Connection())->whereIn('id',$connectionIds)->pluck('connection_id')->toArray();
-        // dd($mutualFriendIds);
         $mutualFreinds = (new User())->whereIn('id',$mutualFriendIds)->get();
         $users = (new User())->whereIn('id',$connectionIds)->get();
         if(isset($users))
@@ -29,7 +27,6 @@ class ConnectionController extends Controller
                 ] ,
                 'count'         => count($users),
             ];
-            // dd($data);
             return successResponse($data);
         }
         else 
